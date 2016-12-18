@@ -15,7 +15,7 @@
     "app",
     "api"
   ],
-  "repository": "expresscr",
+  "repository": "Rizzo98/expresscr",
   "license": "",
   "dependencies": {
     "commander": "2.9.0",
