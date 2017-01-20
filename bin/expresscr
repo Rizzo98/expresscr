@@ -176,6 +176,11 @@ function createApplication(app_name, path) {
       complete();
     });
 
+    mkdir(path + '/db', function(){
+
+      complete();
+    });
+
     mkdir(path + '/routes', function(){
       write(path + '/routes/index.js', index);
       write(path + '/routes/users.js', users);

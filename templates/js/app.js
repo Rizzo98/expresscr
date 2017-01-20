@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const exec = require('child_process').exec;
 
 //session
 var session = require('express-session');
@@ -66,6 +67,11 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//mongodb server activation
+
+exec('mongod --dbpath=./db');
+console.log('mongodb server started');
 
 //this passes express() to bin/www && socketio/socket.js
 module.exports = app;
