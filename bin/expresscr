@@ -137,7 +137,7 @@ function createApplication(app_name, path) {
   var index = loadTemplate('js/routes/index.js');
   var users = loadTemplate('js/routes/users.js');
   var admin = loadTemplate('js/routes/admin.js');
-  var socket = loadTemplate('js/socketio/socket.js');
+  var config = loadTemplate('js/config/config.js');
 
   // CSS
   var css = loadTemplate('css/style.css');
@@ -170,8 +170,8 @@ function createApplication(app_name, path) {
       complete();
     });
 
-    mkdir(path + '/socketio', function(){
-      write(path + '/socketio/socket.js', socket);
+    mkdir(path + '/config', function(){
+      write(path + '/config/config.js', config);
 
       complete();
     });

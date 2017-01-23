@@ -3,7 +3,9 @@ extends layout
 block content
 
   script.
-    var socket = io();
+    jQuery(function($) {
+      var socket = io();
+    });
 
 
   h1= title
