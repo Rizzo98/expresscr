@@ -2,7 +2,7 @@
   "name": "expresscr-generator",
   "description": "ExpressCR application generator",
   "version": "0.0.4",
-  "author": "...",
+  "author": "Rizzo98, EMENCII",
   "contributors": [],
   "keywords": [
     "express",
@@ -13,10 +13,14 @@
     "restful",
     "router",
     "app",
-    "api"
+    "api",
+    "mongodb",
+    "socketio",
+    "session",
+    "bootstrap"
   ],
   "repository": "Rizzo98/expresscr",
-  "license": "",
+  "license": "open source",
   "dependencies": {
     "commander": "2.9.0",
     "mkdirp": "0.5.1",
