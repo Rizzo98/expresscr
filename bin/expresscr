@@ -8,6 +8,7 @@ var path = require('path');
 var readline = require('readline');
 var sortedObject = require('sorted-object');
 var util = require('util');
+var exec = require('child_process').exec;
 
 var _exit = process.exit;
 var eol = os.EOL;
@@ -109,26 +110,34 @@ function confirm(msg, callback) {
  */
 
 function createApplication(app_name, path) {
-  var wait = 5;
+  var wait = 7;
 
   console.log();
   function complete() {
     if (--wait) return;
-    var prompt = launchedFromCmd() ? '>' : '$';
 
-    console.log();
-    console.log('   install dependencies:');
-    console.log('     %s cd %s && npm install', prompt, path);
-    console.log();
-    console.log('   run the app:');
+    //TODO make a separate function
+    var workdir = process.cwd();
 
-    if (launchedFromCmd()) {
-      console.log('     %s SET DEBUG=%s:* & npm start', prompt, app_name);
-    } else {
-      console.log('     %s DEBUG=%s:* npm start', prompt, app_name);
-    }
+    //Install the dependencies
+    exec('cd ' + workdir + '/' + path + ' && npm install', function(err, stdout, stderr){
+      if(err) throw err;
+      console.log(stdout);
+      console.log('dependencies installed');
+      console.log();    
 
-    console.log();
+      var prompt = launchedFromCmd() ? '>' : '$';
+
+      console.log();
+      console.log('   run the app:');
+
+      if (launchedFromCmd()) {
+        console.log('     %s SET DEBUG=%s:* & npm start', prompt, app_name);
+      } else {
+        console.log('     %s DEBUG=%s:* npm start', prompt, app_name);
+      }
+      console.log();
+    });
   }
 
   // JavaScript
@@ -172,12 +181,10 @@ function createApplication(app_name, path) {
 
     mkdir(path + '/config', function(){
       write(path + '/config/config.js', config);
-
       complete();
     });
 
     mkdir(path + '/db', function(){
-
       complete();
     });
 
@@ -185,7 +192,6 @@ function createApplication(app_name, path) {
       write(path + '/routes/index.js', index);
       write(path + '/routes/users.js', users);
       write(path + '/routes/admin.js', admin);
-
       complete();
     });
 
