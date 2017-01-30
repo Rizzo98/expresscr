@@ -17,6 +17,9 @@ Expresscr generator is an app skeleton generator based on [Express-generator](ht
 
 expresscr \<project name\>
 
+
+To start the server:
+
 cd \<project name\>
 
-npm install
+npm start
