@@ -70,8 +70,10 @@ app.use(function(err, req, res, next) {
 
 //mongodb server activation
 
-exec('mongod --dbpath=./db');
-console.log('mongodb server started');
+exec('mongod --dbpath=./db', function(err, stdout, stderr){
+  console.log(err);
+  console.log(stderr);
+});
 
 //this passes express() to bin/www && socketio/socket.js
 module.exports = app;

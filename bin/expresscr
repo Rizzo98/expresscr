@@ -271,12 +271,12 @@ function createApplication(app_name, path) {
         "express": "~4.14.0",
         "express-session": "latest",
         "jade": "~1.11.0",
+        "mongodb": "^2.2.22",
         "morgan": "~1.7.0",
         "serve-favicon": "~2.3.0",
         "socket.io": "latest",
         "nodedump": "0.0.8",
-        "session-file-store": "latest",
-        "mongodb": "^2.2.22"
+        "session-file-store": "latest"
       }
     }
 
