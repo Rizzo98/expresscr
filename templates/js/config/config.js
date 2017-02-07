@@ -5,22 +5,25 @@ var io = require('socket.io').listen(server);
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 
-var nomeDb = 'test';
+var dbName = 'test';
 
-var url = 'mongodb://localhost:27017/'+ nomeDb;
+var url = 'mongodb://localhost:27017/'+ dbName;
 
 io.on('connection', function(socket){
     MongoClient.connect(url, function(err, db) {
-
         assert.equal(null, err);
-        console.log("Connect•••••ed correctly to server");
+        console.log("Connected correctly to server");
 
+        //query
 
-
-
+        db.close();
     });
 });
 
+
+
+
+//Functions
 
 var insertDocuments = function(db,collection, documents ,callback) {
     // Get the documents collection
@@ -71,5 +74,7 @@ var countDocuments = function(db,collection, condition, callback) {
         callback(docs);
     });
 };
+
+
 
 module.exports = server;
